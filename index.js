@@ -26,5 +26,5 @@ Toolkit.run(async tools => {
   }
 }, {
   secrets: ['GITHUB_TOKEN'],
-  event: ['issues.labeled']
+  event: ['label']
 })
