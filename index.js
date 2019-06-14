@@ -22,7 +22,7 @@ Toolkit.run(async tools => {
     if (err.errors) tools.log.error(err.errors)
 
     // Exit with a failing status
-    tools.exit.failure()
+    // tools.exit.failure()
   }
 }, {
   secrets: ['GITHUB_TOKEN'],
