@@ -25,6 +25,5 @@ Toolkit.run(async tools => {
     // tools.exit.failure()
   }
 }, {
-  secrets: ['GITHUB_TOKEN'],
-  event: ['label']
+  secrets: ['GITHUB_TOKEN']
 })
