@@ -1,17 +1,64 @@
 const { Toolkit } = require('actions-toolkit')
 
+const query = `query {
+  repository (owner: "github", name: "developer-relations") {
+    pinnedIssues (first: 3) {
+      totalCount
+      nodes {
+        issue {
+          title
+          number
+          labels (first: 100) {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+// const query = `query ($owner: String!, $repo: String!) {
+//   repository (owner: $owner, name: $repo) {
+//     pinnedIssues (first: 3) {
+//       totalCount
+//       nodes {
+//         issue {
+//           title
+//           number
+//           labels (first: 100) {
+//             nodes {
+//               name
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }`
+
+const vairables = ""
+
 // Run your GitHub Action!
 Toolkit.run(async tools => {
-  tools.exit.success('We did it!')
   // Create the new issue
-  try {
-    // const issue = await tools.github.issues.create({
-    //   assignees: listToArray(attributes.assignees),
-    //   labels: listToArray(attributes.labels),
-    //   milestone: attributes.milestone
-    // })
 
-    tools.log.success(`Labeled issue foo: ${issue.data}`)
+  // return results.repository.pinnedIssues.nodes
+  const headers = {"Accept": "application/vnd.github.elektra-preview+json"}
+  // const results = await tools.github.graphql(query("github", "developer-relations"), {headers})
+  const results = await tools.github.graphql(query, {headers})
+
+  tools.log.success(results)
+
+  try {
+     // const issue = await tools.github.issues.create({
+     //   assignees: listToArray(attributes.assignees),
+     //   labels: listToArray(attributes.labels),
+     //   milestone: attributes.milestone
+     // })
+
+    tools.log.success(tools.context)
     // tools.log.success(`Labeled issue ${issue.data.title}#${issue.data.number}: ${issue.data.html_url}`)
   } catch (err) {
     // Log the error message
@@ -24,6 +71,7 @@ Toolkit.run(async tools => {
     // Exit with a failing status
     // tools.exit.failure()
   }
+  // tools.exit.success('We did it!')
 }, {
   secrets: ['GITHUB_TOKEN']
 })
