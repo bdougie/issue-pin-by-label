@@ -40,7 +40,7 @@ Toolkit.run(async tools => {
   }
 
   if (label !== process.env.LABEL_NAME) {
-    tools.exit.neutral('Issue labeled with non-pinnable label')
+    tools.exit.error("Please set up a LABEL_NAME environment variable in the main.workflow file")
   }
 
   try {
