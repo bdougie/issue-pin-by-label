@@ -1,4 +1,5 @@
 const { Toolkit } = require('actions-toolkit')
+const label = process.env.LABEL_NAME
 //
 // pinnedIssues is still in developer preview
 const headers = {"Accept": "application/vnd.github.elektra-preview"}
@@ -31,15 +32,18 @@ async function pinIssue (tools, id, labeled = true) {
 // Run your GitHub Action!
 Toolkit.run(async tools => {
   const action = tools.context.payload.action
-
   if (action.indexOf("labeled") === -1) {
     tools.exit.neutral("Just checking for recent labels")
   }
-  
-  const label = tools.context.payload.label.name
 
-  if (label !== process.env.LABEL_NAME) {
-    tools.exit.error("Please set up a LABEL_NAME environment variable in the main.workflow file")
+  if (!label) {
+    tools.exit.neutral("Please set up a LABEL_NAME environment variable in the main.workflow file")
+  }
+
+  const labelName = tools.context.payload.label.name
+
+  if (label !== labelName) {
+    tools.exit.neutral(`You can pin based on ${labelName} by setting the LABEL_NAME environment variable in the main.workflow file`)
   }
 
   try {
