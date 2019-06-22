@@ -66,6 +66,8 @@ Toolkit.run(async tools => {
     // Exit with a failing status
     tools.exit.failure()
   }
+
+  tools.exit.success("Action is complete")
 }, {
   secrets: ['GITHUB_TOKEN']
 })
