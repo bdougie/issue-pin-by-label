@@ -11,11 +11,18 @@ This GitHub Action pins an issue based on a specified label.
 Create a environment vairable for storing the `LABEL_NAME`
 
 ```
-action "pin an issue" {
-  ...
+workflow "pin issue based on label" {
+  on = "issues"
+  resolves = ["pin an issue"]
+}
 
+action "pin an issue" {
+  uses = "bdougie/issue-pin-by-label@master"
+  secrets = [
+    "GITHUB_TOKEN"  
+  ],
   env = {
-    LABEL_NAME  = "label name"
+    LABEL_NAME  = "top5"
   }
 }
 ```
