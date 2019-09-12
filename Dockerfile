@@ -11,7 +11,7 @@
 FROM node:slim
 
 # Labels for GitHub to read your action
-LABEL "com.github.actions.name"="issue-pin-by-label"
+LABEL "com.github.actions.name"="Pin Issue by Label"
 LABEL "com.github.actions.description"="This is an action that pins issues based on desired label"
 # Here are all of the available icons: https://feathericons.com/
 LABEL "com.github.actions.icon"="paperclip"
