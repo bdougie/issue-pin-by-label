@@ -11,7 +11,7 @@ This GitHub Action pins an issue based on a specified label.
 Create an environment vairable for storing the `LABEL_NAME`.
 
 ```yml
-# pin.yml 
+# .github/workflows/pin.yml 
 on: 
   issues:
     types: [labeled]
