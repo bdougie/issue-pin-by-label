@@ -11,7 +11,10 @@ This GitHub Action pins an issue based on a specified label.
 Create an environment vairable for storing the `LABEL_NAME`.
 
 ```yml
-on: issues
+  
+on: 
+  issues:
+    types: [labeled]
 name: pin issue based on label
 jobs:
   pinAnIssue:
@@ -21,6 +24,7 @@ jobs:
     - uses: actions/checkout@master
     - name: pin an issue
       uses: bdougie/issue-pin-by-label@master
+
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         LABEL_NAME: enhancement
