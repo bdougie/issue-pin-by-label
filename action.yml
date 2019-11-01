@@ -1,6 +1,6 @@
 name: 'Pin issue based on label'
 description: 'This is an action that pins issues based on desired label'
-author: 'bdougie'
+author: 'Brian Douglas'
 branding:
   icon: 'paperclip'
   color: 'white'
