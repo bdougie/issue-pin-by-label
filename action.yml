@@ -1,0 +1,9 @@
+name: 'Pin issue based on label'
+description: 'This is an action that pins issues based on desired label'
+author: 'bdougie'
+branding:
+  icon: 'paperclip'
+  color: 'white'
+runs:
+  using: 'docker'
+  main: 'Dockerfile'
