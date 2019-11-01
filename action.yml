@@ -6,4 +6,4 @@ branding:
   color: 'white'
 runs:
   using: 'docker'
-  main: 'Dockerfile'
+  image: 'Dockerfile'
